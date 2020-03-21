@@ -1,26 +1,43 @@
 package com.demo.controller;
 
+import org.slf4j.Logger;
+
+
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.demo.exception.ProductNotFoundException;
 import com.demo.model.Category;
+import com.demo.model.Product;
 import com.demo.repository.CategoryRepo;
+import com.demo.repository.ProductRepo;
 
-@Controller
+@RestController
 public class PageController {
+	
+//	private static final Logger logger = LoggerFactory.getLogger(PageController.class);
 	
 	@Autowired
 	private CategoryRepo categoryRepo;
+	
+	@Autowired
+	private ProductRepo productRepo;
 	
 	@RequestMapping(value = {"/","/home","/index"})
 	public ModelAndView index() {
 		
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","Home");
-		
+				
+//		logger.info("Inside PageController index method - INFO");
+//		logger.debug("Inside PageController index method - DEBUG");
+	
+	
 		//Passing the list of categories
 		mv.addObject("categories",categoryRepo.list()); 
 		
@@ -84,5 +101,28 @@ public class PageController {
 		return mv;
 	}
 	
+	/*
+	 * Viewing a single product
+	 */
+	
+	@RequestMapping(value = "/show/{id}/product")
+	public ModelAndView showSingleProduct(@PathVariable int id) throws ProductNotFoundException {
+	
+	ModelAndView mv = new ModelAndView("page");
+	Product product = productRepo.get(id);
+	
+	if(product == null) throw new ProductNotFoundException();
+	
+	// update the view count
+	product.setViews(product.getViews() +1);
+	productRepo.update(product);
+	
+	mv.addObject("title",product.getName());
+	mv.addObject("product",product);
+	
+	mv.addObject("userClickShowProduct",true);
+	
+	return mv;
+	}
 	
 }

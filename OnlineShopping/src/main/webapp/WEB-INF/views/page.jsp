@@ -16,12 +16,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="author" content=""> 
 
   <title>Online Shopping - ${title}</title>
   
   <script>
   	window.menu = '${title}';
+  	
+  	window.contextRoot = '${contextRoot}';
   </script>
 
   <!-- Bootstrap core CSS -->
@@ -29,6 +31,12 @@
 
   <!-- Bootstrap Minty Theme -->
   <link href="${css}/bootstrap-minty.css" rel="stylesheet">
+  
+  <!-- Bootstrap DataTables -->
+  <link href="${css}/dataTables.bootstrap4.css" rel="stylesheet">
+  
+  <!-- Bootstrap FontAwesome -->
+  <link href="${css}/fontawesome/css/all.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="${css}/sitem.css" rel="stylesheet">
@@ -65,6 +73,11 @@
   	<%@include file="listProduct.jsp" %>
   </c:if>
   
+  <!-- Load when user click show products -->
+  <c:if test="${userClickShowProduct == true}">
+  	<%@include file="singleProduct.jsp" %>
+  </c:if>
+  
   </div>
   <!-- Footer -->
   <%@include file="./shared/footer.jsp" %>
@@ -73,6 +86,15 @@
   <!-- Bootstrap core JavaScript -->
   <script src="${js}/jquery.js"></script>
   <script src="${js}/bootstrap.bundle.min.js"></script>
+  
+  <!-- DataTable Plugin -->
+  <script src="${js}/jquery.dataTables.js"></script>
+  
+  <!-- DataTable Bootstrap script-->
+  <script src="${js}/dataTables.bootstrap4.js"></script>
+  
+  <!-- fontawesome script-->
+  <script src="${css}/fontawesome/js/all.js"></script>
   
   <!-- My JS -->
   <script src="${js}/myapp.js"></script>
