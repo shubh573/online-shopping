@@ -39,7 +39,7 @@
   <link href="${css}/fontawesome/css/all.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="${css}/sitem.css" rel="stylesheet">
+  <link href="${css}/myapp.css" rel="stylesheet">
 
 </head>
 
@@ -78,6 +78,11 @@
   	<%@include file="singleProduct.jsp" %>
   </c:if>
   
+   <!-- Load when user click manage products -->
+  <c:if test="${userClickManageProducts == true}">
+  	<%@include file="manageProducts.jsp" %>
+  </c:if>
+  
   </div>
   <!-- Footer -->
   <%@include file="./shared/footer.jsp" %>
@@ -87,6 +92,9 @@
   <script src="${js}/jquery.js"></script>
   <script src="${js}/bootstrap.bundle.min.js"></script>
   
+  <!-- jQuery Validator -->
+  <script src="${js}/jquery.validate.js"></script>
+  
   <!-- DataTable Plugin -->
   <script src="${js}/jquery.dataTables.js"></script>
   
@@ -95,6 +103,9 @@
   
   <!-- fontawesome script-->
   <script src="${css}/fontawesome/js/all.js"></script>
+  
+   <!-- Bootbox-->
+  <script src="${js}/bootbox.min.js"></script>
   
   <!-- My JS -->
   <script src="${js}/myapp.js"></script>

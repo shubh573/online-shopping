@@ -2,14 +2,19 @@ package com.demo.model;
 
 import java.util.UUID;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -18,20 +23,23 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name="product")
 public class Product {
 	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String code;
+	
+	@NotBlank(message = "Please enter the Product Name!")
 	private String name;
+	@NotBlank(message = "Please enter the Brand Name!")
 	private String brand;
 	@JsonIgnore
+	@NotBlank(message = "Please enter the product description!")
 	private String description;
 	@Column(name = "unit_price")
+	@Min(value=1, message="The Price cannot be less than 1")
 	private double unitPrice;
 	private int quantity;
-	@Column(name = "is_active")
-	@JsonIgnore
+	@Column(name = "is_active")	
 	private boolean active;
 	@Column(name = "category_id")
 	@JsonIgnore
@@ -42,6 +50,18 @@ public class Product {
 	private int purchases;
 	private int views;
 	
+	@Transient
+	private MultipartFile file;
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
+
 	//default constructor 
 	public Product() {
 		
@@ -122,6 +142,12 @@ public class Product {
 		this.views = views;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", code=" + code + ", name=" + name + ", brand=" + brand + ", description="
+				+ description + ", unitPrice=" + unitPrice + ", quantity=" + quantity + ", active=" + active
+				+ ", categoryId=" + categoryId + ", supplierId=" + supplierId + ", purchases=" + purchases + ", views="
+				+ views + "]";
+	}
 	
 }

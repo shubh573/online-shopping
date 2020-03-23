@@ -3,7 +3,7 @@
 	<!-- Breadcrumb -->
 	<div class="row">
 		
-		<div class="col-xs-12">
+		<div class="col-sm-12">
 			
 			<ol class="breadcrumb">
 				
@@ -23,7 +23,7 @@
 		
 			<div class="thumbnail">
 			
-				<img src="${images}/${product.code}.jpg" class="img img-responsive"/>
+				<img src="${images}/${product.code}.jpg" class="img img-responsive img-thumbnail"/>
 				
 			</div>
 			

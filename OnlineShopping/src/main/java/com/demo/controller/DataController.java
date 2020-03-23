@@ -24,7 +24,15 @@ public class DataController {
 		
 		return productRepo.listActiveProducts();
 				
-	}	
+	}
+	
+	@RequestMapping("admin/all/products")
+	@ResponseBody
+	public List<Product> getAllProductsForAdmin() {
+		
+		return productRepo.list();
+				
+	}
 	
 	@RequestMapping("/category/{id}/products")
 	@ResponseBody

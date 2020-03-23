@@ -1,0 +1,92 @@
+/*!
+ * Start Bootstrap - Shop Item (https://startbootstrap.com/template-overviews/shop-item)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-item/blob/master/LICENSE)
+ */
+
+html{
+	height: 100px;
+}
+body {
+  padding-top: 56px;
+}
+
+.wrapper{
+	min-height: 100%;
+	position: relative;
+}
+
+.content{
+	padding-bottom: 40px;
+	a: #495057
+}
+
+footer{
+	
+	bottom: 0;
+	height: 10px;
+	width: 100%
+}
+
+.dataTableImg {
+	
+	width: 45px;
+	height: 50px;
+}
+
+.help-block {
+	color: #ff0000;
+}
+
+.adminDataTableImg {
+	
+	height: 50px;
+	width: 50px;
+}
+
+
+/*Toggle Switch code*/
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ccc;
+  border-radius: 30px;
+  transition: .5s;
+}
+
+.slider:before {
+  position: absolute;
+  background-color: #fff;
+  height: 20px;
+  width: 20px;
+  content: "";
+  left: 5px;
+  bottom: 5px;
+  border-radius: 50%;
+  transition: .5s;
+}
+
+input:checked + .slider {
+  background-color: #1863E6;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
